@@ -10,3 +10,5 @@ devtools::load_all()
 
 ## Download data -----
 source(here::here("analyses","download-data"))
+
+# Test for git and commit
