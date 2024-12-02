@@ -12,4 +12,6 @@ devtools::load_all()
 source(here::here("analyses","download-data"))
 
 # Test for git and commit
-# add aline
+# add a line
+# add something to say for the commit test with TextEditor
+# this was not working
