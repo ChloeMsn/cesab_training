@@ -15,3 +15,6 @@ source(here::here("analyses","download-data"))
 # add a line
 # add something to say for the commit test with TextEditor
 # this was not working
+
+quarto::quarto_render(here::here("index.qmd"))
+# rcompendium::add_dependencies()

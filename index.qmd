@@ -1,0 +1,59 @@
+---
+title: "CESAB training - Quarto"
+format: html
+editor: visual
+execute: 
+  echo: false
+  message: false
+---
+## Packages 
+We load the `tidyverse`package. 
+```{r,echo=FALSE,message=FALSE}
+library(tidyverse,quietly = TRUE)
+```
+
+
+## Importing data 
+
+We load the .csv files using the `import_wwf()` function.
+```{r,echo=FALSE,message=FALSE}
+source(here::here("R","import_wwf.R"))
+import_wwf()
+```
+
+## Select Ursidae family 
+We are interested in the Ursidae family only so we filtered data. 
+```{r,echo=FALSE,message=FALSE}
+source(here::here("R","select_family.R"))
+ursidae <- select_family(mammals,"Ursidae")
+```
+
+## Join tables 
+We create a table containing informations about species and details about their associated ecoregions. 
+```{r,echo=FALSE,message=FALSE}
+source(here::here("R","join_table.R"))
+data <- join_table(ursidae,
+                   ecoregion, 
+                   asso)
+```
+
+
+## Count number of ecoregions
+We count the number of ecoregions where a species can be found
+```{r,echo=FALSE,message=FALSE}
+source(here::here("R","count_ecoregion.R"))
+count <- count_ecoregion(data)
+knitr::kable(count)
+```
+
+
+## Graphical representation
+We represent
+```{r,echo=FALSE,message=FALSE}
+#| label: barplot
+#| fig-cap: "Number of ecoregions per species"
+source(here::here("R","plot_ecoregion_species.R"))
+p <- plot_ecoregion_species(count)
+print(p)
+```
+
