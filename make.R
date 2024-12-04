@@ -4,9 +4,10 @@
 devtools::install_deps(upgrade = "never")
 
 ## Load packages & functions ----
-devtools::load_all()
+# devtools::load_all()
 # load packages and our function do not need to be sourced 
 # attached packages are not visible in the environment 
+
 
 ## Download data -----
 source(here::here("analyses","download-data"))
@@ -16,5 +17,13 @@ source(here::here("analyses","download-data"))
 # add something to say for the commit test with TextEditor
 # this was not working
 
-quarto::quarto_render(here::here("index.qmd"))
+## Launch analysis ----
+
+### Quarto -----
+# quarto::quarto_render(here::here("index.qmd"))
+
+### Targets -----
+targets::tar_make()
 # rcompendium::add_dependencies()
+
+
